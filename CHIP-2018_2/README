@@ -1,0 +1,41 @@
+CHIP-2018
+参赛项目：https://biendata.com/competition/chip2018/
+任务描述
+
+
+问句匹配是自然语言处理的最基本任务之一，是自动问答、聊天机器人、信息检索、机器翻译等各种自然语言处理任务基础。问句匹配的主要目的是判断两个问句之间的语义是否等价。判别标准主要根据主句（即提问者）所蕴含的意图来判断两个语句是否等价，而不直接判断两个语句是否表达相同的语义。因此，其核心是语句的意图匹配。由于来源于真实问答语料库，该任务更加接近于智能医疗助手等自然语言处理任务的实际需求。
+
+本次评测任务的主要目标是针对中文的真实患者健康咨询语料，进行问句意图匹配。给定两个语句，要求判定两者意图是否相同或者相近。所有语料来自互联网上患者真实的问题，并经过了筛选和人工的意图匹配标注。平安云将为报名的队伍提供GPU的训练环境。
+
+
+输入：一个语句对
+输出：表明该语句对是否表达相同或者相似意图的二值标签（0或1）
+示例：
+    样例1
+    输入：糖尿病患者如何锻炼\t糖尿病人怎么运动
+    输出：1
+    样例2
+    输入：糖尿病肾病有什么危害\t糖尿病有什么危害
+    输出：0
+数据被编码化，没有实际的文字。
+如：qid1: S107641	qid2: S103854	label: 0	wid1: W105587 W101644 W102193 W106548 W104416   cid1: C101295 C101168 C100955 C101340 C102226....
+
+kaggle类似项目：
+https://www.kaggle.com/c/quora-question-pairs/kernels  计算句子对
+https://www.kaggle.com/anokas/data-analysis-xgboost-starter-0-35460-lb   kernels
+本人参考https://www.kaggle.com/anokas/data-analysis-xgboost-starter-0-35460-lb的kernel，
+另外添加了主题模型等其他的一下特征。具体特征见data_prepare.py
+
+使用了tfidf, tfidf结合embedding; topic model: lsi, lda; distance: edit_distance, cos_distance, word moving distance
+在求主题模型相似度时由于数据量过大出现MemeryError问题。本人求得了句子最可能所属的主题模型，求得了句子对主题模型的差的绝对值。
+
+运行：
+# 获取特征数据：
+python data_prepare.py
+# 训练模型及测试
+python xgboost_model_sim.py
+
+# 注意保持文件名的一致
+
+# 模型参数调整问题未解决
+
