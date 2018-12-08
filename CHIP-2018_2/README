@@ -35,6 +35,16 @@ python data_prepare.py
 # 训练模型及测试
 python xgboost_model_sim.py
 
+
+result: 
+              precision    recall  f1-score   support
+
+          0    0.72962   0.74119   0.73536      4795
+          1    0.75800   0.74693   0.75242      5204
+
+avg / total    0.74439   0.74417   0.74424      9999
+
+
 # 注意保持文件名的一致
 
 # 模型参数调整问题未解决
