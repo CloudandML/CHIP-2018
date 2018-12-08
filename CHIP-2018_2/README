@@ -49,3 +49,5 @@ avg / total    0.74439   0.74417   0.74424      9999
 
 # 模型参数调整问题未解决
 
+#####
+model_CNN_TF_Rank6.py 是完整模型例子，模型原型：https://github.com/TianyuZhuuu/CHIP2018  model SiameseTextCNN的tensorflow版
