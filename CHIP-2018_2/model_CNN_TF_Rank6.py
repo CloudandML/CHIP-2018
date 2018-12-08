@@ -8,8 +8,6 @@
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-# from tensorflow.examples.tutorials.mnist import input_data
 from sklearn.preprocessing import OneHotEncoder
 import json
 import os
